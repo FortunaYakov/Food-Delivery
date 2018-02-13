@@ -1,11 +1,12 @@
 <?php
 
 class CartPage extends BasePage {
-  private $cartModel, $productModel;
+  private $cartModel, $productModel, $userModel;
 
   public function __construct() {
     $this->cartModel = new Cart();
     $this->productModel = new Product();
+    $this->userModel = new User();
   }
 
   public function get() {

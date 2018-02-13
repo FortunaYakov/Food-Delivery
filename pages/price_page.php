@@ -1,6 +1,6 @@
 <?php
 
-class AdminPage extends BasePage {
+class PricePage extends BasePage {
   private $orderModel, $userModel;
 
   public function __construct() {
@@ -9,7 +9,7 @@ class AdminPage extends BasePage {
   }
 
   protected function get() {
-    $orders = $this->orderModel->getOrders();
-    require_once './views/admin/main.php';
+    $price = $this->orderModel->getPriceChanges();
+    require_once './views/admin/price_changes.php';
   }
 }

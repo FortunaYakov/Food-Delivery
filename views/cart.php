@@ -10,32 +10,32 @@
   </thead>
   <tbody>
     <?php foreach ($products as $product) { ?>
-      <tr id="product-<?php echo $product['id']; ?>">
+    <tr id="product-<?php echo $product['id']; ?>">
         <td>
           <a href="/index.php?r=/product&id=<?php echo $product['id']; ?>">
-          <?php echo $product['title']; ?>
+              <?php echo $product['title']; ?></td>
           </a>
-        </td>
         <td>
-          <span id="product-count-<?php echo $product['id']; ?>">
-            <?php echo $lineItems[$product['id']]; ?>
-          </span>
-
-          <form method="POST" action="/index.php?r=/cart/add">
-            <input type="hidden" name="id" class="count" value="<?php echo $product['id']; ?>">
-            <input type="submit" value="+" class="add btn btn-success">
-          </form>
+          <div class="btn-group btn-sm" role="group" >
           <form method="POST" action="/index.php?r=/cart/substract">
             <input type="hidden" name="id" class="count" value="<?php echo $product['id']; ?>">
-            <input type="submit" value="-" class="substract btn btn-danger">
-          </form> 
-        </td>
+            <input type="submit" value="-" class="substract btn btn-danger btn-sm">
+          </form>
+          <span class="btn" id="product-count-<?php echo $product['id']; ?>" >
+            <?php echo $lineItems[$product['id']]; ?>
+          </span>
+          <form method="POST" action="/index.php?r=/cart/add">
+            <input type="hidden" name="id" class="count" value="<?php echo $product['id']; ?>">
+            <input type="submit" value="+" class="add btn btn-success btn-sm">
+          </form>
+        </div>
+           </td>
+
         <td id="price-<?php echo $product['id']; ?>">
           <?php echo $product['price']; ?>
         </td>
         <td class="total" id="total-<?php echo $product['id']; ?>">
           <?php echo $lineItems[$product['id']] * $product['price']; ?>
-            
         </td>
       </tr>
     <?php }?>
@@ -43,7 +43,7 @@
   </tbody>
   <tfoot>
     <tr>
-      <td id="global-total" colspan="4">
+    <td id="global-total" colspan="4">
         Total:
         <?php
           $total = 0;

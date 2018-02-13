@@ -36,7 +36,7 @@ $(document).ready(function() {
 		}).done(function(res) {
 			var countCell = $('#product-count-' + prodId);
 			var prodCount = parseInt(countCell.html()) - 1;
-			
+
 			if (prodCount === 0) {
 				$('#product-' + prodId).remove();
 			} else {

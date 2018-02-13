@@ -23,7 +23,6 @@ class Router {
 
   public function serve() {
     if (!$this->acl->checkAccess($this->getData[self::ROUTE_KEY])) {
-      # say something
       header('location: /index.php?r=/');
       return;
     }

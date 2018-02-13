@@ -1,6 +1,6 @@
 <?php
 
-class AdminPage extends BasePage {
+class GraphicPage extends BasePage {
   private $orderModel, $userModel;
 
   public function __construct() {
@@ -9,7 +9,7 @@ class AdminPage extends BasePage {
   }
 
   protected function get() {
-    $orders = $this->orderModel->getOrders();
-    require_once './views/admin/main.php';
+    $graphicData = $this->orderModel->getStatsForGraph();
+    require_once './views/admin/graphic.php';
   }
 }

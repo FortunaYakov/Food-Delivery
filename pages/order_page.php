@@ -1,11 +1,12 @@
 <?php
 
 class OrderPage extends BasePage {
-  private $cartModel, $orderModel;
+  private $cartModel, $orderModel, $userModel;
 
   public function __construct() {
     $this->cartModel = new Cart();
     $this->orderModel = new Order();
+    $this->userModel = new User();
   }
 
   public function get() {

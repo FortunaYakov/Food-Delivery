@@ -6,6 +6,7 @@ require_once './models/category.php';
 require_once './models/product.php';
 require_once './models/user.php';
 require_once './models/order.php';
+require_once './models/access_model.php';
 
 require_once './models/session_model.php';
 require_once './models/user_session.php';
@@ -21,6 +22,11 @@ require_once './pages/cart_page.php';
 require_once './pages/add_to_cart.php';
 require_once './pages/substract_from_cart.php';
 require_once './pages/order_page.php';
+require_once './pages/orders_page.php';
+require_once './pages/details_page.php';
+require_once './pages/price_page.php';
+require_once './pages/graphic_page.php';
+require_once './pages/search_page.php';
 require_once './pages/product_page.php';
 
 require_once './acl.php';
@@ -36,12 +42,18 @@ $router->addRoute('/', new IndexPage());
 $router->addRoute('/register', new RegisterPage());
 $router->addRoute('/login', new LoginPage());
 $router->addRoute('/logout', new LogoutPage());
+$router->addRoute('/search', new SearchPage());
 $router->addRoute('/cart', new CartPage());
 $router->addRoute('/cart/add', new AddToCart());
 $router->addRoute('/cart/substract', new SubstractFromCart());
 $router->addRoute('/order', new OrderPage());
 $router->addRoute('/product', new ProductPage());
 
+
 $router->addRoute('/admin', new AdminPage());
+$router->addRoute('/admin/orders', new OrdersPage());
+$router->addRoute('/admin/details', new DetailsPage());
+$router->addRoute('/admin/price_changes', new PricePage());
+$router->addRoute('/admin/graphic', new GraphicPage());
 
 $router->serve($_SESSION);

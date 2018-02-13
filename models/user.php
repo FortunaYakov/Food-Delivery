@@ -2,8 +2,8 @@
 
 class User extends BaseModel {
   public function createUser($username, $password) {
-    $stmt = $this->conn->prepare('INSERT INTO users (username, password)
-                                  VALUES (?, ?)');
+    $stmt = $this->conn->prepare('INSERT INTO users (username, password, role_id)
+                                  VALUES (?, ?, 2 )');
 
     $hashedPass = md5($password);
     $stmt->execute([$username, $hashedPass]);
@@ -29,10 +29,13 @@ class User extends BaseModel {
     return $stmt->fetch(PDO::FETCH_ASSOC);
   }
 
-  public function isAdmin($userId) {
-    $user = $this->findUserById($userId);
+  public function checkAccessLevel($userId) {
+    $stmt = $this->conn->prepare('SELECT r.access_lvl FROM roles as r
+                                  JOIN users as u
+                                  ON r.id = u.role_id AND u.id = ?');
+    $stmt->execute([$userId]);
 
-    return $user['role_id'] == 1;
+    return $stmt->fetch(PDO::FETCH_ASSOC);
   }
 
   public function checkUser($username, $password) {

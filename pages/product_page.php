@@ -5,6 +5,7 @@ class ProductPage extends BasePage {
 
 	public function __construct() {
 		$this->productModel = new Product();
+		$this->userModel = new User();
 	}
 
 	public function get() {
